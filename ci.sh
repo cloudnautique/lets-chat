@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-IMAGE=ibuildthecloud/lets-chat:${BUILD_ID:-latest}
+IMAGE=ibuildthecloud/lets-chat:${BUILD_NUMBER:-latest}
 
 docker build -t $IMAGE -f docker/Dockerfile .
 
@@ -14,5 +14,5 @@ fi
 
 if [[ -n "$RANCHER_SECRET_KEY" ]]; then
     sed 's!sdelements/lets-chat:latest!'$IMAGE'!' > docker-compose.yml
-    rancher-compose -p lets-chat-${BUILD_ID} up
+    rancher-compose -p lets-chat-${BUILD_NUMBER} up
 fi
