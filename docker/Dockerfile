@@ -22,11 +22,13 @@ RUN set -x \
 &&  rm -rf /tmp/npm* \
 &&  apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $BUILD_DEPS
 
-ADD $TAR_GZ_URL ./master.tar.gz
+#ADD $TAR_GZ_URL ./master.tar.gz
+#
+#RUN tar -xzvf master.tar.gz \
+#&&  cp -a lets-chat-master/. . \
+#&&  rm -rf lets-chat-master
 
-RUN tar -xzvf master.tar.gz \
-&&  cp -a lets-chat-master/. . \
-&&  rm -rf lets-chat-master
+ADD . /usr/src/app/
 
 RUN groupadd -r node \
 &&  useradd -r -g node node \
