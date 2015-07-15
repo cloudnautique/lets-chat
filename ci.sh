@@ -13,6 +13,6 @@ if [[ "$DOCKER_HUB_USER" && -n "$DOCKER_HUB_PASS" && -n "$DOCKER_HUB_EMAIL" ]]; 
 fi
 
 if [[ -n "$RANCHER_SECRET_KEY" ]]; then
-    sed 's!sdelements/lets-chat:latest!'$IMAGE'!' > docker-compose.yml
+    sed 's!sdelements/lets-chat:latest!'$IMAGE'!' docker/docker-compose.yml > docker-compose.yml
     rancher-compose -p lets-chat-${BUILD_NUMBER} up -d
 fi
