@@ -17,6 +17,7 @@ fi
 
 if [[ -n "$RANCHER_SECRET_KEY" ]]; then
     mkdir -p dist
+    cp docker/docker-compose.yml dist/
     curl -X GET -o rancher-compose.tar.gz -L https://github.com/rancher/rancher-compose/releases/download/v0.2.5/rancher-compose-linux-amd64-v0.2.5.tar.gz
     ls ./
     tar -xvzf ./rancher-compose.tar.gz -C /usr/bin/
